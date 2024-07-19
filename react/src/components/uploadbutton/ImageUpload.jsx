@@ -47,37 +47,28 @@ function ImageUpload() {
 
   return (
     <Container>
-      <Row>
-        <Col md={6}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="custom-upload">
-              <Form.Label htmlFor="upload-button">Upload Image</Form.Label>
-              <Form.Control
-                id="upload-button"
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+      <Form onSubmit={handleSubmit}>
+        <Row className="align-items-center">
+          <Col md={6}>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Label>Upload Image</Form.Label>
+              <Form.Control type="file" onChange={handleImageChange} />
             </Form.Group>
-            {imagePreviewUrl && (
-              <div className="image-preview">
-                <img src={imagePreviewUrl} alt="Image Preview" />
-              </div>
-            )}
+          </Col>
+          <Col md={6} className="text-right">
             <Button variant="primary" type="submit">
               Submit
             </Button>
-          </Form>
-        </Col>
-        <Col md={6}>
-          {prediction && (
-            <div className="prediction-result">
-              <h3>Prediction Result:</h3>
-              <p>{prediction}</p>
-            </div>
-          )}
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+        {image && (
+          <Row className="mt-3">
+            <Col>
+              <img src={image} alt="Preview" style={{ width: '100%' }} />
+            </Col>
+          </Row>
+        )}
+      </Form>
     </Container>
   );
 }
