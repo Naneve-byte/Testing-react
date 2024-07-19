@@ -15,17 +15,20 @@ function App() {
       <div className="App">
         <Router>
         <Header/>
+        <div className="main-content">
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         
-        </Routes>
         
+        </Routes>
+        </div>
         </Router>
         
         <hr></hr>
         <div className="footer-copyright text-center py-3 bg-secondary shadow-1-strong" >
         <p> Create By Nanang Dwi Febrianto</p>
+        
         </div>
         
       </div>

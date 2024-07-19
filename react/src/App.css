@@ -10,3 +10,7 @@
 body {
   padding-top: 70px; /* Sesuaikan ini dengan tinggi navbar Anda */
 }
+
+.main-content {
+  margin-top: 80px; /* Sesuaikan nilai ini dengan tinggi navbar Anda */
+}
