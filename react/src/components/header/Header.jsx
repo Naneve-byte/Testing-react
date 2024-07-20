@@ -11,28 +11,28 @@ import {LinkContainer} from 'react-router-bootstrap'
 const Header = () => {
   return (
     <div>
-    <Navbar expand="lg" className="custom-navbar">
+    <Navbar expand="lg" className="custom-navbar " >
       <Container>
       <LinkContainer to="/">
-        <Navbar.Brand href="#home">Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
+        <Navbar.Brand  href="#home"><img src='/brain-svgrepo-com.svg' alt='logo' width="30" height="30"/>{' '}Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+        <Navbar.Collapse id="basic-navbar-nav " >
+          <Nav className="ms-auto justify-content-between">
             <LinkContainer to="/">
             <Nav.Link>Home</Nav.Link>
             </LinkContainer>
 
+            
+            <Nav.Link href='https://en.wikipedia.org/wiki/Brain_tumor'>About Brain Tumor</Nav.Link>
+            
+
             <LinkContainer to="/about">
-            <Nav.Link >About Brain Tumor</Nav.Link>
+            <Nav.Link >Blog</Nav.Link>
             </LinkContainer>
-
             
-            <Nav.Link href="#contact">Contact</Nav.Link>
-            
-
-            
-            <Nav.Link href="#link">Link</Nav.Link>
-            
+  
+            <Nav.Link href='https://github.com/Naneve-byte'>G</Nav.Link>
+    
           </Nav>
         </Navbar.Collapse>
       </Container>
