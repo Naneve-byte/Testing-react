@@ -63,7 +63,7 @@ const ImageUpload = () => {
         // Get predictions
         const predictions = await model.predict(batched).data();
         console.log('Predictions:', predictions);
-        setResult(predictions);
+        setResult(predictions[0]);
       } catch (error) {
         console.error('Error processing image:', error);
       }
@@ -113,9 +113,11 @@ const ImageUpload = () => {
           <Row className="mt-3">
             <Col>
               <h4>Model Predictions:</h4>
+              <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
               <pre>{JSON.stringify(result, null, 2)}</pre>
             </Col>
           </Row>
+          
         )}
       </Form>
     </Container>
