@@ -1,43 +1,75 @@
-name: gh-pages
-
+name: Deploy to GitHub Pages
 on:
   push:
     branches:
       - master
-
+  workflow_dispatch:
 jobs:
-  gh-pages:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: v18.x
-
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
       - name: Install pnpm
-        run: npm install --global pnpm
-
-      - name: Cache .pnpm-store
-        uses: actions/cache@v2
+        uses: pnpm/action-setup@v4
         with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
+          version: 9.5.0
+      - name: install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Run tests
+        run: pnpm test
 
-      - name: Build VuePress site
-        run: pnpm build
-
-      - name: Copy README.md
-        run: cp README.md dist
-
-      - name: Deploy GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          version: 9.5.0
+      - name: install Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build project
+        run: pnpm run build
+      - name: Upload production-ready build files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+
+    permissions:
+      pages: write
+      contents: write
+      id-token: write
+      actions: read
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: github-pages
+          path: ./dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
