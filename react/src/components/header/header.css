@@ -1,14 +1,9 @@
-.custom-navbar {
-    background-color: #AF3737 !important; /* Warna latar belakang navbar */
-  }
-  .custom-navbar .navbar-brand {
-    color: white !important;
-  }
-  
-  .custom-navbar .nav-link {
-    color: white !important;
+.bg-myColor {
+  background-image: linear-gradient(to right,#7d0000,#   )
+
   }
 nav.navbar {
+
     padding: 20px 0;
     position: fixed;
     width: 100%;
@@ -16,10 +11,36 @@ nav.navbar {
     z-index: 9999;
     transition:  0.32s ease-in-out;
     font-size: 18px;
+    
 }
-.{font-family: sans-serif;}
-  
 
+nav.navbar {
+  padding: 18px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 99;
+  transition: 0.3s ease-in-out;
+}
+
+nav.navbar a.navbar-brand{
+  width: 10%;
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.3);
+
+}
+
+nav.navbar .navbar-nav .nav-link.navbar-link{
+  padding:  0 25px;
+  letter-spacing: 0.8px;
+  font-family: Montserret, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  opacity: 0.8;
+  color: #ffffff;
+}
 
 
 

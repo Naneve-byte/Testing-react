@@ -9,8 +9,10 @@ function Home() {
       <div className="a">
 
         <ImageUpload/>
+        
       
       </div>
+      
     </div>
   )
 }

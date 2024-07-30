@@ -1,4 +1,7 @@
-
+:root{
+  --bs-primary: #E32020;
+  --bs-secondary: #FFD8D2;
+}
 
 .footer {
   background-color: #6c757d;
@@ -6,6 +9,7 @@
   color: #ffffff;
   text-align: center;
   padding: 10px 0;
+  
 }
 body {
   padding-top: 70px; /* Sesuaikan ini dengan tinggi navbar Anda */

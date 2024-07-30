@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useDropzone } from 'react-dropzone';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import * as tf from '@tensorflow/tfjs';
 import './ImageUpload.css';
-import CloseButton from 'react-bootstrap/CloseButton';
+
 const ImageUpload = () => {
   const [image, setImage] = useState(null);
   const [hasImage, setHasImage] = useState(false);
@@ -22,12 +21,30 @@ const ImageUpload = () => {
       }
     };
     loadModel();
-  }, []);
 
-  const onDrop = (acceptedFiles) => {
-    setImage(URL.createObjectURL(acceptedFiles[0]));
-    setHasImage(true);
-  };
+    // Add document event listeners for drag and drop
+    const handleDrop = (e) => {
+      e.preventDefault();
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+        setImage(URL.createObjectURL(file));
+        setHasImage(true);
+      }
+    };
+
+    const handleDragOver = (e) => {
+      e.preventDefault();
+    };
+
+    document.addEventListener('drop', handleDrop);
+    document.addEventListener('dragover', handleDragOver);
+
+    return () => {
+      document.removeEventListener('drop', handleDrop);
+      document.removeEventListener('dragover', handleDragOver);
+    };
+  }, []);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -73,52 +90,45 @@ const ImageUpload = () => {
     };
   };
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop });
-
   return (
-    <Container className="mt-5">
+    <Container className="mt-6">
       <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col><h2>Input Image</h2></Col>
+          <Col><h2>Hasil</h2></Col>
+        </Row>
+        <hr />
         <Row className="align-items-center">
-          <Col md={6}>
-            <div 
-              {...getRootProps()} 
-              className={`dropzone ${hasImage ? 'image-loaded' : ''}`}
-            >
-              <input {...getInputProps()} />
+          <Col md={4}>
+            <div className={`dropzone ${hasImage ? 'image-loaded' : ''}`}>
+              <input type="file" onChange={handleFileChange} />
               {!hasImage && (
                 <div className="file-input-group">
-                  <p>Drag & drop an image here, or click to select one</p>
-                  <Form.Group controlId="formFile">
-                    <Form.Label>Choose file</Form.Label>
-                    <Form.Control type="file" onChange={handleFileChange} />
-                  </Form.Group>
+                  <p>Drag & drop an image anywhere on the page, or click to select one</p>
                 </div>
               )}
               {image && (
                 <div className="image-preview">
                   <img src={image} alt="Preview" />
                   <button className="remove-button" onClick={handleRemoveImage}>×</button>
-                  
                 </div>
               )}
             </div>
           </Col>
-          <Col md={6} className="text-right">
+          <Col md={4} className="text-center">
             <Button variant="primary" type="submit">
-              Submit
+              Prediksi
             </Button>
           </Col>
+          <Col md={4} className="text-center">
+            {result !== null && (
+              <div>
+                <h4>Model Predictions:</h4>
+                <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
+              </div>
+            )}
+          </Col>
         </Row>
-        {result && (
-          <Row className="mt-3">
-            <Col>
-              <h4>Model Predictions:</h4>
-              <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
-              <pre>{JSON.stringify(result, null, 2)}</pre>
-            </Col>
-          </Row>
-          
-        )}
       </Form>
     </Container>
   );
