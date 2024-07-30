@@ -3,18 +3,20 @@ name: gh-pages
 on:
   push:
     branches:
-      - master
+      - master  # Change this to your default branch if different
 
 jobs:
   gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: v18.x
+          node-version: '18.x'
+          cache: 'pnpm'
 
       - name: Install pnpm
         run: npm install --global pnpm
@@ -26,14 +28,12 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
+
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build VuePress site
-        run: pnpm build
-
-      - name: Copy README.md
-        run: cp README.md dist
+      - name: Build the project
+        run: pnpm run build
 
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
