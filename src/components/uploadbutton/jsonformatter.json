@@ -1,0 +1,510 @@
+{
+  "format": "graph-model",
+  "generatedBy": "2.6.0",
+  "convertedBy": "TensorFlow.js Converter v3.18.0",
+  "signature": {
+    "inputs": {
+      "input_15": {
+        "name": "input_15:0",
+        "dtype": "DT_FLOAT",
+        "tensorShape": {
+          "dim": [
+            {
+              "size": "-1"
+            },
+            {
+              "size": "224"
+            },
+            {
+              "size": "224"
+            },
+            {
+              "size": "3"
+            }
+          ]
+        }
+      }
+    },
+    "outputs": {
+      "fc": {
+        "name": "Identity:0",
+        "dtype": "DT_FLOAT",
+        "tensorShape": {
+          "dim": [
+            {
+              "size": "-1"
+            },
+            {
+              "size": "1"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "modelTopology": {
+    "node": [
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/zero_padding2d_11/Pad/paddings",
+        "op": "Const",
+        "attr": {
+          "dtype": {
+            "type": "DT_INT32"
+          },
+          "value": {
+            "tensor": {
+              "dtype": "DT_INT32",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "4"
+                  },
+                  {
+                    "size": "2"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/flatten_20/Const",
+        "op": "Const",
+        "attr": {
+          "dtype": {
+            "type": "DT_INT32"
+          },
+          "value": {
+            "tensor": {
+              "dtype": "DT_INT32",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "2"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/fc/MatMul/ReadVariableOp",
+        "op": "Const",
+        "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
+          "value": {
+            "tensor": {
+              "dtype": "DT_FLOAT",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "5408"
+                  },
+                  {
+                    "size": "1"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/fc/BiasAdd/ReadVariableOp",
+        "op": "Const",
+        "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
+          "value": {
+            "tensor": {
+              "dtype": "DT_FLOAT",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "1"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "input_15",
+        "op": "Placeholder",
+        "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
+          "shape": {
+            "shape": {
+              "dim": [
+                {
+                  "size": "-1"
+                },
+                {
+                  "size": "224"
+                },
+                {
+                  "size": "224"
+                },
+                {
+                  "size": "3"
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_weights",
+        "op": "Const",
+        "attr": {
+          "value": {
+            "tensor": {
+              "dtype": "DT_FLOAT",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "7"
+                  },
+                  {
+                    "size": "7"
+                  },
+                  {
+                    "size": "3"
+                  },
+                  {
+                    "size": "32"
+                  }
+                ]
+              }
+            }
+          },
+          "dtype": {
+            "type": "DT_FLOAT"
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_bn_offset",
+        "op": "Const",
+        "attr": {
+          "dtype": {
+            "type": "DT_FLOAT"
+          },
+          "value": {
+            "tensor": {
+              "dtype": "DT_FLOAT",
+              "tensorShape": {
+                "dim": [
+                  {
+                    "size": "32"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/zero_padding2d_11/Pad",
+        "op": "Pad",
+        "input": [
+          "input_15",
+          "StatefulPartitionedCall/BrainDetectionModel/zero_padding2d_11/Pad/paddings"
+        ],
+        "attr": {
+          "Tpaddings": {
+            "type": "DT_INT32"
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/activation_11/Relu",
+        "op": "_FusedConv2D",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/zero_padding2d_11/Pad",
+          "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_weights",
+          "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_bn_offset"
+        ],
+        "device": "/device:CPU:0",
+        "attr": {
+          "data_format": {
+            "s": "TkhXQw=="
+          },
+          "strides": {
+            "list": {
+              "i": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "use_cudnn_on_gpu": {
+            "b": true
+          },
+          "dilations": {
+            "list": {
+              "i": [
+                "1",
+                "1",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          },
+          "num_args": {
+            "i": "1"
+          },
+          "epsilon": {
+            "f": 0
+          },
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA==",
+                "UmVsdQ=="
+              ]
+            }
+          },
+          "explicit_paddings": {
+            "list": {}
+          },
+          "padding": {
+            "s": "VkFMSUQ="
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/max_pool0/MaxPool",
+        "op": "MaxPool",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/activation_11/Relu"
+        ],
+        "attr": {
+          "ksize": {
+            "list": {
+              "i": [
+                "1",
+                "4",
+                "4",
+                "1"
+              ]
+            }
+          },
+          "strides": {
+            "list": {
+              "i": [
+                "1",
+                "4",
+                "4",
+                "1"
+              ]
+            }
+          },
+          "explicit_paddings": {
+            "list": {}
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          },
+          "data_format": {
+            "s": "TkhXQw=="
+          },
+          "padding": {
+            "s": "VkFMSUQ="
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/max_pool1/MaxPool",
+        "op": "MaxPool",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/max_pool0/MaxPool"
+        ],
+        "attr": {
+          "explicit_paddings": {
+            "list": {}
+          },
+          "ksize": {
+            "list": {
+              "i": [
+                "1",
+                "4",
+                "4",
+                "1"
+              ]
+            }
+          },
+          "strides": {
+            "list": {
+              "i": [
+                "1",
+                "4",
+                "4",
+                "1"
+              ]
+            }
+          },
+          "data_format": {
+            "s": "TkhXQw=="
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          },
+          "padding": {
+            "s": "VkFMSUQ="
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/flatten_20/Reshape",
+        "op": "Reshape",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/max_pool1/MaxPool",
+          "StatefulPartitionedCall/BrainDetectionModel/flatten_20/Const"
+        ],
+        "attr": {
+          "Tshape": {
+            "type": "DT_INT32"
+          },
+          "T": {
+            "type": "DT_FLOAT"
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/fc/BiasAdd",
+        "op": "_FusedMatMul",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/flatten_20/Reshape",
+          "StatefulPartitionedCall/BrainDetectionModel/fc/MatMul/ReadVariableOp",
+          "StatefulPartitionedCall/BrainDetectionModel/fc/BiasAdd/ReadVariableOp"
+        ],
+        "device": "/device:CPU:0",
+        "attr": {
+          "T": {
+            "type": "DT_FLOAT"
+          },
+          "epsilon": {
+            "f": 0
+          },
+          "transpose_a": {
+            "b": false
+          },
+          "transpose_b": {
+            "b": false
+          },
+          "fused_ops": {
+            "list": {
+              "s": [
+                "Qmlhc0FkZA=="
+              ]
+            }
+          },
+          "num_args": {
+            "i": "1"
+          }
+        }
+      },
+      {
+        "name": "StatefulPartitionedCall/BrainDetectionModel/fc/Sigmoid",
+        "op": "Sigmoid",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/fc/BiasAdd"
+        ],
+        "attr": {
+          "T": {
+            "type": "DT_FLOAT"
+          }
+        }
+      },
+      {
+        "name": "Identity",
+        "op": "Identity",
+        "input": [
+          "StatefulPartitionedCall/BrainDetectionModel/fc/Sigmoid"
+        ],
+        "attr": {
+          "T": {
+            "type": "DT_FLOAT"
+          }
+        }
+      }
+    ],
+    "library": {},
+    "versions": {
+      "producer": 808
+    }
+  },
+  "weightsManifest": [
+    {
+      "paths": [
+        "group1-shard1of1.bin"
+      ],
+      "weights": [
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/zero_padding2d_11/Pad/paddings",
+          "shape": [
+            4,
+            2
+          ],
+          "dtype": "int32"
+        },
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/flatten_20/Const",
+          "shape": [
+            2
+          ],
+          "dtype": "int32"
+        },
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/fc/MatMul/ReadVariableOp",
+          "shape": [
+            5408,
+            1
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/fc/BiasAdd/ReadVariableOp",
+          "shape": [
+            1
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_weights",
+          "shape": [
+            7,
+            7,
+            3,
+            32
+          ],
+          "dtype": "float32"
+        },
+        {
+          "name": "StatefulPartitionedCall/BrainDetectionModel/conv0/Conv2D_bn_offset",
+          "shape": [
+            32
+          ],
+          "dtype": "float32"
+        }
+      ]
+    }
+  ]
+}
