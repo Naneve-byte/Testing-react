@@ -1,31 +1,23 @@
-name: Release to NPM
-
+name: pnpm Example Workflow
 on:
-  release:
-    types: [published]
+  push:
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-
-      - name: Use Node LTS ✨
-        uses: actions/setup-node@v3
-        with:
-          node-version: lts/*
-          registry-url: https://registry.npmjs.org
-          cache: pnpm
-
-      - name: Install dependencies 📦️
-        run: pnpm install --frozen-lockfile
-
-      - name: Build 🔨
-        run: pnpm build
-
-      - uses: simenandre/publish-with-pnpm@v1
-        with:
-          npm-auth-token: ${{ secrets.NPM_TOKEN }}
+    - uses: actions/checkout@v4
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install
