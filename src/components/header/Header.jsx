@@ -13,7 +13,7 @@ const Header = () => {
     <Navbar expand="lg" bg="myColor" >
       <Container>
       <LinkContainer to="/">
-        <Navbar.Brand  href="#home"><img src='/brain-svgrepo-com.svg' alt='logo' width="30" height="30"/>{' '}Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
+        <Navbar.Brand  href="#home"><img src='./Testing-react/brain-svgrepo-com.svg' alt='logo' width="30" height="30"/>{' '}Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav " >
           <Nav className="ms-auto">
