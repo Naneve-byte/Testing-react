@@ -5,7 +5,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import * as Icon from 'react-bootstrap-icons';
 import {LinkContainer} from 'react-router-bootstrap'
-import logo from '/brain-svgrepo-com.svg';
 
 
 
