@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import * as Icon from 'react-bootstrap-icons';
 import {LinkContainer} from 'react-router-bootstrap'
+import logo from '/brain-svgrepo-com.svg';
 
 
 
@@ -13,7 +14,7 @@ const Header = () => {
     <Navbar expand="lg" bg="myColor" >
       <Container>
       <LinkContainer to="/">
-        <Navbar.Brand  href="#home"><img src='./Testing-react/brain-svgrepo-com.svg' alt='logo' width="30" height="30"/>{' '}Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
+        <Navbar.Brand  href="#home"><img src="/Testing-react/brain-svgrepo-com.svg" alt='logo' width="30" height="30"/>{' '}Sistem Prediksi Tumor Otak</Navbar.Brand></LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav " >
           <Nav className="ms-auto">
