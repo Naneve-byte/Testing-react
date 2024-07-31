@@ -5,8 +5,8 @@ import App from './App.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/Testing-React">
+   
     <App />
-    </BrowserRouter>
+ 
   </React.StrictMode>,
 )
