@@ -13,7 +13,7 @@ const ImageUpload = () => {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        const loadedModel = await tf.loadLayersModel('/Testing-react/irismodel-tfjs/model.json');
+        const loadedModel = await tf.loadLayersModel('/Testing-react/model.json');
         setModel(loadedModel);
         console.log('Model loaded successfully');
       } catch (error) {
