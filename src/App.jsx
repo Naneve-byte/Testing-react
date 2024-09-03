@@ -7,7 +7,6 @@ import Home from './components/home/Home';
 /* import UploadButton from './components/uploadbutton/ImageUpload';
 import ImageUpload from './components/uploadbutton/ImageUpload'; */
 import './App.css';
-import { Navigate } from 'react-router-dom';
 
 function App() {
   return (

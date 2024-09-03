@@ -4,6 +4,7 @@ import {
 } from 'react-bootstrap';
 import * as tf from '@tensorflow/tfjs';
 import './ImageUpload.css';
+import modell from '../../assets/model/CNN/model.json';
 
 function ImageUpload() {
   const [image, setImage] = useState(null);
@@ -15,7 +16,7 @@ function ImageUpload() {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        const loadedModel = await tf.loadLayersModel('/Testing-react/model.json');
+        const loadedModel = await tf.loadLayersModel('../../../public/irismodel-tfjs/model.json');
         setModel(loadedModel);
         console.log('Model loaded successfully');
       } catch (error) {

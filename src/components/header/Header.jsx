@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
+import YourSvg from '../../assets/brain-svgrepo-com.svg';
 
 function Header() {
   return (
@@ -11,7 +12,8 @@ function Header() {
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand href="#home">
-            <img src="/Testing-react/brain-svgrepo-com.svg" alt="logo" width="30" height="30" />
+
+            <img src={YourSvg} alt="logo" width="30" height="30" />
             {' '}
             Sistem Prediksi Tumor Otak
           </Navbar.Brand>
