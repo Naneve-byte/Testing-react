@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import {
+  Form, Button, Container, Row, Col,
+} from 'react-bootstrap';
 import * as tf from '@tensorflow/tfjs';
 import './ImageUpload.css';
+import modell from '../../assets/model/CNN/model.json';
 
-const ImageUpload = () => {
+function ImageUpload() {
   const [image, setImage] = useState(null);
   const [hasImage, setHasImage] = useState(false);
   const [result, setResult] = useState(null);
@@ -13,7 +16,7 @@ const ImageUpload = () => {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        const loadedModel = await tf.loadLayersModel('/Testing-react/model.json');
+        const loadedModel = await tf.loadLayersModel('/irismodel-tfjs/model.json');
         setModel(loadedModel);
         console.log('Model loaded successfully');
       } catch (error) {
@@ -25,7 +28,7 @@ const ImageUpload = () => {
     // Add document event listeners for drag and drop
     const handleDrop = (e) => {
       e.preventDefault();
-      const files = e.dataTransfer.files;
+      const { files } = e.dataTransfer;
       if (files.length > 0) {
         const file = files[0];
         setImage(URL.createObjectURL(file));
@@ -110,7 +113,7 @@ const ImageUpload = () => {
               {image && (
                 <div className="image-preview">
                   <img src={image} alt="Preview" />
-                  <button className="remove-button" onClick={handleRemoveImage}>×</button>
+                  <button type="button" className="remove-button" onClick={handleRemoveImage}>×</button>
                 </div>
               )}
             </div>
@@ -132,6 +135,6 @@ const ImageUpload = () => {
       </Form>
     </Container>
   );
-};
+}
 
 export default ImageUpload;
