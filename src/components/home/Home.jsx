@@ -7,11 +7,8 @@ function Home() {
   return (
     <div>
       <div className="a">
-
         <ImageUpload />
-
       </div>
-
     </div>
   );
 }

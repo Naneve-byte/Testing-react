@@ -1,47 +1,65 @@
 .bg-myColor {
-  background-image: linear-gradient(to right,#7d0000,#d70000   )
-
-  }
+	background-image: linear-gradient(to right, #7d0000, #d70000);
+}
 nav.navbar {
-
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 9999;
-    transition:  0.32s ease-in-out;
-    font-size: 18px;
-    
+	padding: 20px 0;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 9999;
+	transition: 0.32s ease-in-out;
+	font-size: 18px;
+	padding: 18px;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 99;
+	transition: 0.3s ease-in-out;
 }
 
-nav.navbar {
-  padding: 18px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 99;
-  transition: 0.3s ease-in-out;
+nav.navbar a.navbar-brand {
+	width: 10%;
+	color: #ffffff;
+	font-weight: 600;
+	text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-nav.navbar a.navbar-brand{
-  width: 10%;
-  color: #ffffff;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  font-weight: 600;
-  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.3);
-
+nav.navbar .navbar-nav .nav-link.navbar-link {
+	padding: 0 25px;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 0.8px;
+	font-weight: 700;
+	font-size: 18px;
+	opacity: 0.8;
+	color: #ffffff;
+}
+.navbar-link {
+	position: relative;
+	padding: 10px;
+	color: #333;
+	transition:
+		transform 0.3s ease,
+		background-color 0.3s ease,
+		color 0.3s ease;
+	display: inline-block;
+	border-radius: 8px; /* Membuat sudut membulat */
 }
 
-nav.navbar .navbar-nav .nav-link.navbar-link{
-  padding:  0 25px;
-  letter-spacing: 0.8px;
-  font-family: Montserret, sans-serif;
-  font-weight: 400;
-  font-size: 18px;
-  opacity: 0.8;
-  color: #ffffff;
+.navbar-link:hover {
+	transform: scale(1.1); /* Memperbesar elemen saat hover */
+	background-color: #000000; /* Warna latar belakang saat hover */
+	color: #fff; /* Mengubah warna teks saat hover */
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
 }
 
+.logo:hover {
+	transform: scale(1.1); /* Membuat logo sedikit lebih besar saat di-hover */
+	transition: transform 0.2s ease-in-out;
+}
 
-
-  
+a {
+	font-family: 'Baskervville SC', serif;
+	font-weight: 500;
+	font-size: 30px;
+	font-style: bold;
+}

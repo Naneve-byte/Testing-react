@@ -4,13 +4,13 @@ import {
 } from 'react-bootstrap';
 import * as tf from '@tensorflow/tfjs';
 import './ImageUpload.css';
-import modell from '../../assets/model/CNN/model.json';
 
 function ImageUpload() {
   const [image, setImage] = useState(null);
   const [hasImage, setHasImage] = useState(false);
   const [result, setResult] = useState(null);
   const [model, setModel] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Load model on component mount
   useEffect(() => {
@@ -18,9 +18,11 @@ function ImageUpload() {
       try {
         const loadedModel = await tf.loadLayersModel('/irismodel-tfjs/model.json');
         setModel(loadedModel);
+        setLoading(false);
         console.log('Model loaded successfully');
       } catch (error) {
         console.error('Error loading model:', error);
+        setLoading(false);
       }
     };
     loadModel();
@@ -95,40 +97,52 @@ function ImageUpload() {
 
   return (
     <Container className="mt-6">
+      {loading ? (
+        <div className="loading-container">
+          <div className="loading-spinner" />
+          <p>Loading model...</p>
+        </div>
+      ) : (
+        <div className="main-content" />
+      )}
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Col><h2>Input Image</h2></Col>
-          <Col><h2>Hasil</h2></Col>
+          <Col md={6} className="text-left-column">
+            <h2>Input Image</h2>
+          </Col>
+          <Col md={6} className="text-center">
+            <h2>Hasil</h2>
+          </Col>
+          <br />
         </Row>
-        <hr />
-        <Row className="align-items-center">
-          <Col md={4}>
+        <Row className="align-items-center mt-4">
+          <Col md={4} className="text-center">
             <div className={`dropzone ${hasImage ? 'image-loaded' : ''}`}>
-              <input type="file" onChange={handleFileChange} />
+              <input type="file" aria-label="Large" onChange={handleFileChange} />
               {!hasImage && (
-                <div className="file-input-group">
-                  <p>Drag & drop an image anywhere on the page, or click to select one</p>
-                </div>
+              <div className="file-input-group ">
+                <p>Drag & drop an image anywhere on the page, or click to select one</p>
+              </div>
               )}
               {image && (
-                <div className="image-preview">
-                  <img src={image} alt="Preview" />
-                  <button type="button" className="remove-button" onClick={handleRemoveImage}>×</button>
-                </div>
+              <div className="image-preview">
+                <img src={image} alt="Preview" />
+                <button type="button" className="remove-button" onClick={handleRemoveImage}>×</button>
+              </div>
               )}
             </div>
           </Col>
           <Col md={4} className="text-center">
-            <Button variant="primary" type="submit">
+            <Button className="btn btn-three" type="submit">
               Prediksi
             </Button>
           </Col>
           <Col md={4} className="text-center">
             {result !== null && (
-              <div>
-                <h4>Model Predictions:</h4>
-                <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
-              </div>
+            <div>
+              <h4>Model Predictions:</h4>
+              <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
+            </div>
             )}
           </Col>
         </Row>

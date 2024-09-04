@@ -11,7 +11,7 @@ function Header() {
     <Navbar expand="lg" bg="myColor">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#home" className="logo">
 
             <img src={YourSvg} alt="logo" width="30" height="30" />
             {' '}
