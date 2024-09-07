@@ -3,13 +3,7 @@
 	--bs-secondary: #ffd8d2;
 }
 
-.footer {
-	background-color: #6c757d;
-	box-shadow: 0 4px 2px -2px gray;
-	color: #ffffff;
-	text-align: center;
-	padding: 10px 0;
-}
+
 
 body {
 	padding-top: 70px; /* Sesuaikan ini dengan tinggi navbar Anda */

@@ -116,7 +116,7 @@ function ImageUpload() {
           <br />
         </Row>
         <Row className="align-items-center mt-4">
-          <Col md={4} className="text-center">
+          <Col md={4} className="text-center ">
             <div className={`dropzone ${hasImage ? 'image-loaded' : ''}`}>
               <input type="file" aria-label="Large" onChange={handleFileChange} />
               {!hasImage && (
@@ -139,7 +139,7 @@ function ImageUpload() {
           </Col>
           <Col md={4} className="text-center">
             {result !== null && (
-            <div>
+            <div className="result-container">
               <h4>Model Predictions:</h4>
               <p>{result < 0.5 ? 'Tumor Terdeteksi' : 'Tidak Ada Tumor'}</p>
             </div>

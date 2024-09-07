@@ -20,9 +20,13 @@ function App() {
         </div>
       </Router>
       <hr />
-      <footer className="text-black text-center fixed-bottom p-3" style={{ backgroundColor: 'rgba(237,237,237,255)' }}>
-        <p style={{ fontWeight: 1000 }, { fontSize: 30 }}> Create By Nanang Dwi Febrianto</p>
+      <footer className="fixed-bottom" style={{ backgroundColor: '#1e1e1e' }}>
+        <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+          <p className="text-light fs-4">© 2024 Create By : Nanang Dwi Febrianto</p>
+        </div>
+
       </footer>
+
     </div>
   );
 }

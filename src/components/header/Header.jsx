@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import YourSvg from '../../assets/brain-svgrepo-com.svg';
 
-function Header() {
+export default function Header() {
   return (
     <Navbar expand="lg" bg="myColor">
       <Container>
@@ -19,7 +19,7 @@ function Header() {
           </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav ">
+        <Navbar.Collapse id="basic-navbar-nav justify">
           <Nav className="ms-auto">
 
             <LinkContainer to="/">
@@ -40,5 +40,3 @@ function Header() {
     </Navbar>
   );
 }
-
-export default Header;

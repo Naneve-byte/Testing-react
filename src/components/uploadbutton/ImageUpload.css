@@ -150,3 +150,113 @@
 	font-size: 16px;
 	color: #333;
 }
+
+/* Tambahkan dalam file CSS Anda */
+.row.align-items-center {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.col-md-4 {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.result-container {
+	padding: 10px;
+	background-color: #f8f9fa;
+	border-radius: 5px;
+}
+
+.file-input-group {
+	text-align: center;
+}
+
+.image-preview img {
+	max-width: 100%;
+	height: auto;
+}
+/* Responsive */
+/*  di bawah 1200px */
+@media (max-width: 1200px) {
+	.btn-three {
+		width: 80%;
+	}
+
+	.text-left-column,
+	.text-center {
+		text-align: center;
+	}
+
+	.result-container h4 {
+		font-size: 1.5rem;
+	}
+}
+
+/*  di bawah 992px*/
+@media (max-width: 992px) {
+	.btn-three {
+		width: 100%;
+		max-width: 250px;
+	}
+
+	.file-input-group {
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	.result-container h4 {
+		font-size: 1.4rem;
+	}
+}
+
+/*  768px  */
+@media (max-width: 768px) {
+	.btn-three {
+		width: 100%;
+	}
+
+	.file-input-group {
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	.image-preview img {
+		width: 100%;
+		height: auto;
+	}
+
+	.result-container h4 {
+		font-size: 1.2rem;
+	}
+}
+.br {
+	margin-top: 30px;
+}
+/*  di bawah 576px  */
+@media (max-width: 576px) {
+	.btn-three {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	.file-input-group {
+		padding: 5px;
+		font-size: 12px;
+	}
+
+	.image-preview img {
+		width: 100%;
+		height: auto;
+	}
+
+	.result-container h4 {
+		font-size: 1rem;
+	}
+
+	.result-container p {
+		font-size: 0.9rem;
+	}
+}
