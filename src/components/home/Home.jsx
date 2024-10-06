@@ -6,7 +6,7 @@ import ImageUpload from '../uploadbutton/ImageUpload';
 function Home() {
   return (
     <div>
-      <div className="a">
+      <div>
         <ImageUpload />
       </div>
     </div>

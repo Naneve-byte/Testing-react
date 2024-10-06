@@ -9,6 +9,14 @@
 	margin: auto;
 	background-color: rgb(255, 219, 219);
 	border-radius: 25px;
+	transition:
+		background-color 0.3s,
+		border-color 0.3s; /* Add transition effects */
+}
+
+.dropzone:hover {
+	background-color: rgba(223, 54, 54, 0.2); /* Change background on hover */
+	border-color: #c0392b; /* Darken border on hover */
 }
 
 .file-input-group {
@@ -16,6 +24,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	color: #555; /* Slightly darker text for visibility */
 }
 
 .dropzone p {
@@ -23,7 +32,7 @@
 }
 
 .dropzone.image-loaded p {
-	display: none;
+	display: none; /* Hide instructions once image is loaded */
 }
 
 .image-preview {
@@ -61,202 +70,102 @@
 .remove-button:hover {
 	background: rgba(0, 0, 0, 0.7);
 }
-.position-relative {
-	position: relative;
-	padding-left: 15px; /* Jarak antara teks dan garis */
+
+.custom-container {
+	height: 70vh; /* Height for centering */
 }
 
-.separator-button {
-	position: absolute;
-	top: -20px; /* Atur jarak vertikal tombol di atas garis */
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 1; /* Memastikan tombol di atas garis */
-}
-
-.separator-line {
-	border-left: 2px solid #000; /* Gaya garis */
-	height: 100px; /* Tinggi garis */
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	z-index: 0; /* Memastikan garis di bawah tombol */
-}
-.btn-three {
-	color: #fff;
-	transition: all 0.5s;
-	position: relative;
-}
-.btn-three::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
+.custom-card {
+	max-width: 700px; /* Card size */
 	width: 100%;
-	height: 100%;
-	z-index: 1;
-	background-color: rgba(255, 255, 255, 0.1);
-	transition: all 0.3s;
-}
-.btn-three:hover::before {
-	opacity: 0;
-	transform: scale(0.5, 0.5);
-}
-.btn-three::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 1;
-	opacity: 0;
-	transition: all 0.3s;
-	border: 1px solid rgba(255, 255, 255, 0.5);
-	transform: scale(1.2, 1.2);
-}
-.btn-three:hover::after {
-	opacity: 1;
-	transform: scale(1, 1);
-}
-
-/* Loading.css */
-.loading-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
-
-.loading-spinner {
-	border: 4px solid rgba(0, 0, 0, 0.1);
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	border-left-color: #09f;
-	animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-	to {
-		transform: rotate(360deg);
-	}
-}
-
-.loading-container p {
-	margin-top: 10px;
-	font-size: 16px;
-	color: #333;
-}
-
-/* Tambahkan dalam file CSS Anda */
-.row.align-items-center {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.col-md-4 {
-	flex: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	border-radius: 20px;
+	background-color: #fff;
 }
 
 .result-container {
-	padding: 10px;
+	padding: 20px;
 	background-color: #f8f9fa;
+	border-radius: 10px;
+}
+
+.prediction-text {
+	font-weight: bold;
+}
+
+.btn-three {
+	color: #fff;
+	background-color: #000; /* Hitam */
+	border: none;
+	padding: 10px 60px; /* Ukuran tombol */
+	font-size: 18px;
 	border-radius: 5px;
+	transition:
+		background-color 0.3s,
+		color 0.3s;
 }
 
-.file-input-group {
-	text-align: center;
+.btn-three:hover {
+	background-color: #7d0000; /* Merah saat hover */
+	color: #fff;
 }
 
-.image-preview img {
-	max-width: 100%;
-	height: auto;
-}
-/* Responsive */
-/*  di bawah 1200px */
-@media (max-width: 1200px) {
-	.btn-three {
-		width: 80%;
-	}
-
-	.text-left-column,
-	.text-center {
-		text-align: center;
-	}
-
-	.result-container h4 {
-		font-size: 1.5rem;
-	}
+.custom-container {
+	height: 70vh;
 }
 
-/*  di bawah 992px*/
+.custom-card {
+	max-width: 700px;
+	width: 100%;
+	border-radius: 20px;
+	background-color: #fff;
+}
+
+.result-container {
+	padding: 20px;
+	background-color: #f8f9fa;
+	border-radius: 10px;
+}
+
 @media (max-width: 992px) {
-	.btn-three {
-		width: 100%;
-		max-width: 250px;
-	}
-
-	.file-input-group {
-		padding: 10px;
-		font-size: 14px;
-	}
-
-	.result-container h4 {
-		font-size: 1.4rem;
-	}
-}
-
-/*  768px  */
-@media (max-width: 768px) {
-	.btn-three {
-		width: 100%;
-	}
-
-	.file-input-group {
-		padding: 10px;
-		font-size: 14px;
-	}
-
-	.image-preview img {
-		width: 100%;
+	.custom-container {
 		height: auto;
-	}
-
-	.result-container h4 {
-		font-size: 1.2rem;
-	}
-}
-.br {
-	margin-top: 30px;
-}
-/*  di bawah 576px  */
-@media (max-width: 576px) {
-	.btn-three {
-		width: 100%;
 		margin-top: 20px;
 	}
 
-	.file-input-group {
-		padding: 5px;
-		font-size: 12px;
+	.custom-card {
+		max-width: 90%;
+		padding: 20px;
+		margin-bottom: 20px;
 	}
+}
 
-	.image-preview img {
-		width: 100%;
+@media (max-width: 576px) {
+	.custom-container {
 		height: auto;
+		margin-top: 30px;
 	}
 
-	.result-container h4 {
-		font-size: 1rem;
+	.custom-card {
+		max-width: 95%;
+		padding: 15px;
+		margin-bottom: 40px;
 	}
+}
 
-	.result-container p {
-		font-size: 0.9rem;
-	}
+h1 {
+	margin-top: 20px; /* Sesuaikan jarak atas judul */
+}
+
+.container {
+	margin-top: 30px; /* Atur margin atas untuk seluruh container */
+}
+
+.text-center p {
+	margin-bottom: 20px; /* Menambah spasi bawah pada paragraf */
+}
+.btn:disabled {
+	background-color: #ccc; /* Ubah warna latar belakang */
+	color: #666; /* Ubah warna teks */
+	border-color: #999; /* Ubah warna border */
+	cursor: not-allowed; /* Tampilkan kursor not-allowed */
 }

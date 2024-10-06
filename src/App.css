@@ -3,12 +3,21 @@
 	--bs-secondary: #ffd8d2;
 }
 
-
-
 body {
 	padding-top: 70px; /* Sesuaikan ini dengan tinggi navbar Anda */
 }
 
 .main-content {
 	margin-top: 80px; /* Sesuaikan nilai ini dengan tinggi navbar Anda */
+}
+.scroll-container {
+	height: 500px; /* Atur tinggi sesuai kebutuhan */
+	overflow-y: scroll;
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.item {
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
 }
